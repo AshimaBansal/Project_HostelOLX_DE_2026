@@ -24,7 +24,7 @@
 | Group Lead | Ashima Bansal | 2501010648 | [AshimaBansal](https://github.com/AshimaBansal) |
 | Member 2 | Siddhant Srivastava | 2501010450 | [Siddhant-Srivastava-20](https://github.com/Siddhant-Srivastava-20) |
 | Member 3 | Parv Verma | 2501010545 | [Parvverma](https://github.com/Parvverma) |
-| Member 4 | Neha Sharma | 2501010git300 | [Nehanowal](https://github.com/Nehanowal) |
+| Member 4 | Neha Sharma | 2501010300 | [Nehanowal](https://github.com/Nehanowal) |
 
 **Team No.:** T0070  
 **Section:** E  

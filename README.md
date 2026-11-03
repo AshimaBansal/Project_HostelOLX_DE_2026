@@ -15,7 +15,9 @@
 | `CHECKPOINTS.md` | Checkpoint dates and the files each one needs (DE and AP repos) |
 
 **Getting started:** **clone this repository and push it into your team's DE repo** (the DE repo you submitted in the form); the steps are in [`CHECKPOINTS.md`](CHECKPOINTS.md). Keep the structure shown in [Repository structure](#repository-structure-submit-exactly-this). Unzip `seed_data.zip` inside your project folder, but don't commit the CSV files. Deadlines are in [`CHECKPOINTS.md`](CHECKPOINTS.md). Then begin with Phase 1.
+
 ---
+
 ## Team details
 
 | Role | Name | Enrollment No. | GitHub Username |
@@ -28,6 +30,7 @@
 **Team No.:** T0070  
 **Section:** E  
 **Repository URL:** https://github.com/AshimaBansal/Project_HostelOLX_DE_2026
+
 ---
 
 ## How this project works

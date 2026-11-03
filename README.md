@@ -17,18 +17,18 @@
 **Getting started:** **clone this repository and push it into your team's DE repo** (the DE repo you submitted in the form); the steps are in [`CHECKPOINTS.md`](CHECKPOINTS.md). Keep the structure shown in [Repository structure](#repository-structure-submit-exactly-this). Unzip `seed_data.zip` inside your project folder, but don't commit the CSV files. Deadlines are in [`CHECKPOINTS.md`](CHECKPOINTS.md). Then begin with Phase 1.
 
 ---
-
-## Team details (fill in before you start)
+## Team details
 
 | Role | Name | Enrollment No. | GitHub Username |
-|------|------|----------------|-----------------|
-| Group Lead | | | |
-| Member 2 | | | |
-| Member 3 | | | |
-| Member 4 | | | |
+|---|---|---|---|
+| Group Lead | Ashima Bansal | 2501010648 | [AshimaBansal](https://github.com/AshimaBansal) |
+| Member 2 | Siddhant Srivastava | 2501010450 | [Siddhant-Srivastava-20](https://github.com/Siddhant-Srivastava-20) |
+| Member 3 | Parv Verma | 2501010545 | [Parvverma](https://github.com/Parvverma) |
+| Member 4 | Neha Sharma | 300 | [Nehanowal](https://github.com/Nehanowal) |
 
-**Team No.:** ____ · **Section:** ____ · **Repository URL:** ____
-
+**Team No.:** T0070  
+**Section:** E  
+**Repository URL:** https://github.com/AshimaBansal/Project_HostelOLX_DE_2026
 ---
 
 ## How this project works

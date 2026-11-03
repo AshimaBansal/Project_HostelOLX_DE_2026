@@ -28,7 +28,7 @@
 | Member 4 | Neha Sharma | 2501010300 | [Nehanowal](https://github.com/Nehanowal) |
 
 **Team No.:** T0070  
-**Section:** E  
+**Section:** E and D 
 **Repository URL:** https://github.com/AshimaBansal/Project_HostelOLX_DE_2026
 
 ---

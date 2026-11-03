@@ -1,0 +1,27 @@
+{
+  "team_number": "T0070",
+  "group_lead": {
+    "name": "Ashima Bansal",
+    "enrollment_no": "2501010648",
+    "github": "AshimaBansal"
+  },
+  "members": [
+    {
+      "name": "Siddhant Srivastava",
+      "enrollment_no": "2501010450",
+      "github": "Siddhant-Srivastava-20"
+    },
+    {
+      "name": "Parv Verma",
+      "enrollment_no": "2501010545",
+      "github": "Parvverma"
+    },
+    {
+      "name": "Neha Sharma",
+      "enrollment_no": "2501010300",
+      "github": "Nehanowal"
+    }
+  ],
+  "postgres_version": "",
+  "laptop_used_for_benchmarks": ""
+}

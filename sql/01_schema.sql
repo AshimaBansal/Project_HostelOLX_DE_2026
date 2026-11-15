@@ -43,7 +43,9 @@ CREATE TABLE users (
 
     CONSTRAINT chk_users_guide_level
         CHECK (
-            (is_local_guide = TRUE AND guide_level BETWEEN 1 AND 10)
+            (is_local_guide = TRUE
+            AND guide_level IS NOT NULL
+            AND guide_level BETWEEN 1 AND 10)
             OR
             (is_local_guide = FALSE AND guide_level IS NULL)
         )

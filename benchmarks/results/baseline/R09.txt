@@ -1,0 +1,60 @@
+=== R09 run 1 ===
+GroupAggregate  (cost=400.01..403.42 rows=124 width=72) (actual time=0.380..0.396 rows=24.00 loops=1)
+  Group Key: (EXTRACT(hour FROM recorded_at))
+  Buffers: shared hit=124
+  ->  Sort  (cost=400.01..400.32 rows=124 width=38) (actual time=0.376..0.378 rows=125.00 loops=1)
+        Sort Key: (EXTRACT(hour FROM recorded_at))
+        Sort Method: quicksort  Memory: 28kB
+        Buffers: shared hit=124
+        ->  Bitmap Heap Scan on traffic_readings  (cost=5.38..395.70 rows=124 width=38) (actual time=0.193..0.352 rows=125.00 loops=1)
+              Recheck Cond: (segment_id = 5)
+              Heap Blocks: exact=117
+              Buffers: shared hit=121
+              ->  Bitmap Index Scan on uq_traffic_segment_time  (cost=0.00..5.35 rows=124 width=0) (actual time=0.012..0.012 rows=125.00 loops=1)
+                    Index Cond: (segment_id = 5)
+                    Index Searches: 1
+                    Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=150
+Planning Time: 0.236 ms
+Execution Time: 0.664 ms
+=== R09 run 2 ===
+GroupAggregate  (cost=400.01..403.42 rows=124 width=72) (actual time=0.191..0.207 rows=24.00 loops=1)
+  Group Key: (EXTRACT(hour FROM recorded_at))
+  Buffers: shared hit=124
+  ->  Sort  (cost=400.01..400.32 rows=124 width=38) (actual time=0.186..0.188 rows=125.00 loops=1)
+        Sort Key: (EXTRACT(hour FROM recorded_at))
+        Sort Method: quicksort  Memory: 28kB
+        Buffers: shared hit=124
+        ->  Bitmap Heap Scan on traffic_readings  (cost=5.38..395.70 rows=124 width=38) (actual time=0.028..0.164 rows=125.00 loops=1)
+              Recheck Cond: (segment_id = 5)
+              Heap Blocks: exact=117
+              Buffers: shared hit=121
+              ->  Bitmap Index Scan on uq_traffic_segment_time  (cost=0.00..5.35 rows=124 width=0) (actual time=0.012..0.012 rows=125.00 loops=1)
+                    Index Cond: (segment_id = 5)
+                    Index Searches: 1
+                    Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=150
+Planning Time: 0.214 ms
+Execution Time: 0.236 ms
+=== R09 run 3 ===
+GroupAggregate  (cost=400.01..403.42 rows=124 width=72) (actual time=0.185..0.200 rows=24.00 loops=1)
+  Group Key: (EXTRACT(hour FROM recorded_at))
+  Buffers: shared hit=124
+  ->  Sort  (cost=400.01..400.32 rows=124 width=38) (actual time=0.180..0.182 rows=125.00 loops=1)
+        Sort Key: (EXTRACT(hour FROM recorded_at))
+        Sort Method: quicksort  Memory: 28kB
+        Buffers: shared hit=124
+        ->  Bitmap Heap Scan on traffic_readings  (cost=5.38..395.70 rows=124 width=38) (actual time=0.027..0.160 rows=125.00 loops=1)
+              Recheck Cond: (segment_id = 5)
+              Heap Blocks: exact=117
+              Buffers: shared hit=121
+              ->  Bitmap Index Scan on uq_traffic_segment_time  (cost=0.00..5.35 rows=124 width=0) (actual time=0.012..0.012 rows=125.00 loops=1)
+                    Index Cond: (segment_id = 5)
+                    Index Searches: 1
+                    Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=150
+Planning Time: 0.205 ms
+Execution Time: 0.229 ms

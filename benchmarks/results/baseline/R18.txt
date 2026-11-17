@@ -1,0 +1,84 @@
+=== R18 run 1 ===
+Sort  (cost=6258.01..6258.02 rows=4 width=47) (actual time=12.992..13.662 rows=4.00 loops=1)
+  Sort Key: (round(((100.0 * (count(*) FILTER (WHERE ((status)::text = 'CANCELLED'::text)))::numeric) / (count(*))::numeric), 1)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=2915
+  ->  Finalize GroupAggregate  (cost=6257.03..6257.97 rows=4 width=47) (actual time=12.983..13.656 rows=4.00 loops=1)
+        Group Key: travel_mode
+        Buffers: shared hit=2912
+        ->  Gather Merge  (cost=6257.03..6257.83 rows=7 width=23) (actual time=12.976..13.648 rows=8.00 loops=1)
+              Workers Planned: 1
+              Workers Launched: 1
+              Buffers: shared hit=2912
+              ->  Sort  (cost=5257.02..5257.03 rows=4 width=23) (actual time=12.037..12.037 rows=4.00 loops=2)
+                    Sort Key: travel_mode
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=2912
+                    Worker 0:  Sort Method: quicksort  Memory: 25kB
+                    ->  Partial HashAggregate  (cost=5256.94..5256.98 rows=4 width=23) (actual time=12.023..12.024 rows=4.00 loops=2)
+                          Group Key: travel_mode
+                          Batches: 1  Memory Usage: 32kB
+                          Buffers: shared hit=2904
+                          Worker 0:  Batches: 1  Memory Usage: 32kB
+                          ->  Parallel Seq Scan on navigation_sessions  (cost=0.00..4080.47 rows=117647 width=17) (actual time=0.003..3.557 rows=100000.00 loops=2)
+                                Buffers: shared hit=2904
+Planning:
+  Buffers: shared hit=107
+Planning Time: 0.163 ms
+Execution Time: 13.697 ms
+=== R18 run 2 ===
+Sort  (cost=6258.01..6258.02 rows=4 width=47) (actual time=34.483..35.440 rows=4.00 loops=1)
+  Sort Key: (round(((100.0 * (count(*) FILTER (WHERE ((status)::text = 'CANCELLED'::text)))::numeric) / (count(*))::numeric), 1)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=2915
+  ->  Finalize GroupAggregate  (cost=6257.03..6257.97 rows=4 width=47) (actual time=34.470..35.429 rows=4.00 loops=1)
+        Group Key: travel_mode
+        Buffers: shared hit=2912
+        ->  Gather Merge  (cost=6257.03..6257.83 rows=7 width=23) (actual time=34.462..35.421 rows=8.00 loops=1)
+              Workers Planned: 1
+              Workers Launched: 1
+              Buffers: shared hit=2912
+              ->  Sort  (cost=5257.02..5257.03 rows=4 width=23) (actual time=29.860..29.861 rows=4.00 loops=2)
+                    Sort Key: travel_mode
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=2912
+                    Worker 0:  Sort Method: quicksort  Memory: 25kB
+                    ->  Partial HashAggregate  (cost=5256.94..5256.98 rows=4 width=23) (actual time=29.835..29.835 rows=4.00 loops=2)
+                          Group Key: travel_mode
+                          Batches: 1  Memory Usage: 32kB
+                          Buffers: shared hit=2904
+                          Worker 0:  Batches: 1  Memory Usage: 32kB
+                          ->  Parallel Seq Scan on navigation_sessions  (cost=0.00..4080.47 rows=117647 width=17) (actual time=0.007..9.368 rows=100000.00 loops=2)
+                                Buffers: shared hit=2904
+Planning:
+  Buffers: shared hit=107
+Planning Time: 0.600 ms
+Execution Time: 35.516 ms
+=== R18 run 3 ===
+Sort  (cost=6258.01..6258.02 rows=4 width=47) (actual time=13.529..14.155 rows=4.00 loops=1)
+  Sort Key: (round(((100.0 * (count(*) FILTER (WHERE ((status)::text = 'CANCELLED'::text)))::numeric) / (count(*))::numeric), 1)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=2915
+  ->  Finalize GroupAggregate  (cost=6257.03..6257.97 rows=4 width=47) (actual time=13.521..14.149 rows=4.00 loops=1)
+        Group Key: travel_mode
+        Buffers: shared hit=2912
+        ->  Gather Merge  (cost=6257.03..6257.83 rows=7 width=23) (actual time=13.514..14.142 rows=8.00 loops=1)
+              Workers Planned: 1
+              Workers Launched: 1
+              Buffers: shared hit=2912
+              ->  Sort  (cost=5257.02..5257.03 rows=4 width=23) (actual time=12.609..12.609 rows=4.00 loops=2)
+                    Sort Key: travel_mode
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=2912
+                    Worker 0:  Sort Method: quicksort  Memory: 25kB
+                    ->  Partial HashAggregate  (cost=5256.94..5256.98 rows=4 width=23) (actual time=12.594..12.595 rows=4.00 loops=2)
+                          Group Key: travel_mode
+                          Batches: 1  Memory Usage: 32kB
+                          Buffers: shared hit=2904
+                          Worker 0:  Batches: 1  Memory Usage: 32kB
+                          ->  Parallel Seq Scan on navigation_sessions  (cost=0.00..4080.47 rows=117647 width=17) (actual time=0.003..3.637 rows=100000.00 loops=2)
+                                Buffers: shared hit=2904
+Planning:
+  Buffers: shared hit=107
+Planning Time: 0.172 ms
+Execution Time: 14.189 ms

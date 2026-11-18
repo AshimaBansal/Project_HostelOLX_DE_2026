@@ -255,7 +255,7 @@ CREATE TABLE navigation_sessions (
     distance_km      NUMERIC(6,2) NOT NULL,
     eta_minutes      INTEGER NOT NULL,
     actual_minutes   INTEGER,
-    rerouted_count   SMALLINT NOT NULL,
+    rerouted_count   SMALLINT NOT NULL DEFAULT 0,   -- a session that just started has 0 re-routes (W01 omits it)
     status           VARCHAR(20) NOT NULL,
 
     CONSTRAINT fk_navigation_user

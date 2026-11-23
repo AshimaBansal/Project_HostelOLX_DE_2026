@@ -1,0 +1,22 @@
+=== R11 run 1 ===
+GroupAggregate  (cost=88074.49..90562.08 rows=16984 width=55) (actual time=581.338..721.452 rows=24.00 loops=1)
+  Group Key: (date_trunc('month'::text, started_at)), travel_mode
+  Buffers: shared hit=92 read=57437, temp read=4849 written=4866
+  ->  Gather Merge  (cost=88074.49..90052.56 rows=16984 width=23) (actual time=571.437..669.317 rows=1125819.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=92 read=57437, temp read=4849 written=4866
+        ->  Sort  (cost=87074.47..87092.16 rows=7077 width=23) (actual time=569.144..586.992 rows=375273.00 loops=3)
+              Sort Key: (date_trunc('month'::text, started_at)), travel_mode
+              Sort Method: external merge  Disk: 14024kB
+              Buffers: shared hit=92 read=57437, temp read=4849 written=4866
+              Worker 0:  Sort Method: external merge  Disk: 11600kB
+              Worker 1:  Sort Method: external merge  Disk: 13168kB
+              ->  Parallel Seq Scan on navigation_sessions  (cost=0.00..86621.94 rows=7077 width=23) (actual time=0.342..511.859 rows=375273.00 loops=3)
+                    Filter: (((status)::text = 'COMPLETED'::text) AND (EXTRACT(year FROM started_at) = '2026'::numeric))
+                    Rows Removed by Filter: 958060
+                    Buffers: shared read=57437
+Planning:
+  Buffers: shared hit=230
+Planning Time: 0.413 ms
+Execution Time: 726.903 ms

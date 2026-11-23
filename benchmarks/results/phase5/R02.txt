@@ -1,0 +1,15 @@
+=== R02 run 1 ===
+Nested Loop Left Join  (cost=0.86..16.91 rows=1 width=95) (actual time=0.566..0.567 rows=1.00 loops=1)
+  Buffers: shared hit=6 read=5
+  ->  Index Scan using places_pkey on places p  (cost=0.42..8.44 rows=1 width=79) (actual time=0.028..0.029 rows=1.00 loops=1)
+        Index Cond: (place_id = 18)
+        Index Searches: 1
+        Buffers: shared hit=3 read=1
+  ->  Index Scan using pk_opening_hours on opening_hours h  (cost=0.43..8.45 rows=1 width=20) (actual time=0.536..0.536 rows=1.00 loops=1)
+        Index Cond: ((place_id = 18) AND (weekday = 2))
+        Index Searches: 1
+        Buffers: shared hit=3 read=4
+Planning:
+  Buffers: shared hit=331
+Planning Time: 0.937 ms
+Execution Time: 0.594 ms

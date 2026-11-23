@@ -1,0 +1,25 @@
+=== R03 run 1 ===
+Limit  (cost=16616.79..16616.84 rows=20 width=34) (actual time=190.532..190.535 rows=20.00 loops=1)
+  Buffers: shared hit=1523 read=4839
+  ->  Sort  (cost=16616.79..16630.13 rows=5334 width=34) (actual time=190.531..190.533 rows=20.00 loops=1)
+        Sort Key: avg_rating DESC NULLS LAST, review_count DESC
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=1523 read=4839
+        ->  Bitmap Heap Scan on places  (cost=5007.10..16474.85 rows=5334 width=34) (actual time=14.876..189.914 rows=5386.00 loops=1)
+              Recheck Cond: (((name)::text ~~* '%biryani%'::text) AND (city_id = 1))
+              Heap Blocks: exact=5360
+              Buffers: shared hit=1517 read=4839
+              ->  BitmapAnd  (cost=5007.10..5007.10 rows=5334 width=0) (actual time=14.345..14.346 rows=0.00 loops=1)
+                    Buffers: shared hit=81 read=915
+                    ->  Bitmap Index Scan on idx_places_name_trgm  (cost=0.00..241.70 rows=32358 width=0) (actual time=3.209..3.210 rows=33386.00 loops=1)
+                          Index Cond: ((name)::text ~~* '%biryani%'::text)
+                          Index Searches: 1
+                          Buffers: shared hit=81
+                    ->  Bitmap Index Scan on idx_places_city_cat_rating  (cost=0.00..4762.48 rows=132007 width=0) (actual time=10.776..10.776 rows=128853.00 loops=1)
+                          Index Cond: (city_id = 1)
+                          Index Searches: 1
+                          Buffers: shared read=915
+Planning:
+  Buffers: shared hit=218
+Planning Time: 4.970 ms
+Execution Time: 190.592 ms

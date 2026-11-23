@@ -1,0 +1,34 @@
+=== R12 run 1 ===
+Limit  (cost=26816.95..26816.98 rows=10 width=33) (actual time=154.425..154.553 rows=10.00 loops=1)
+  Buffers: shared hit=5189 read=12757
+  ->  Sort  (cost=26816.95..26838.10 rows=8458 width=33) (actual time=154.425..154.552 rows=10.00 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 25kB
+        Buffers: shared hit=5189 read=12757
+        ->  HashAggregate  (cost=26549.60..26634.18 rows=8458 width=33) (actual time=153.472..154.077 rows=7977.00 loops=1)
+              Group Key: p.place_id
+              Batches: 1  Memory Usage: 793kB
+              Buffers: shared hit=5186 read=12757
+              ->  Gather  (cost=23386.60..26507.31 rows=8458 width=25) (actual time=145.857..152.495 rows=8377.00 loops=1)
+                    Workers Planned: 2
+                    Workers Launched: 2
+                    Buffers: shared hit=5186 read=12757
+                    ->  Parallel Hash Join  (cost=22386.60..24661.51 rows=3524 width=25) (actual time=144.319..151.238 rows=2792.33 loops=3)
+                          Hash Cond: (n.dest_place_id = p.place_id)
+                          Buffers: shared hit=5186 read=12757
+                          ->  Parallel Index Only Scan using idx_nav_started_cover on navigation_sessions n  (cost=0.43..2217.14 rows=22168 width=4) (actual time=0.668..4.646 rows=17094.00 loops=3)
+                                Index Cond: (started_at >= '2026-06-24 00:00:00+05:30'::timestamp with time zone)
+                                Heap Fetches: 0
+                                Index Searches: 1
+                                Buffers: shared hit=6 read=385
+                          ->  Parallel Hash  (cost=21723.11..21723.11 rows=53045 width=25) (actual time=143.527..143.527 rows=42666.67 loops=3)
+                                Buckets: 131072  Batches: 1  Memory Usage: 8800kB
+                                Buffers: shared hit=5180 read=12372
+                                ->  Parallel Seq Scan on places p  (cost=0.00..21723.11 rows=53045 width=25) (actual time=0.218..139.423 rows=42666.67 loops=3)
+                                      Filter: (city_id = 2)
+                                      Rows Removed by Filter: 224284
+                                      Buffers: shared hit=5180 read=12372
+Planning:
+  Buffers: shared hit=380 read=8
+Planning Time: 1.806 ms
+Execution Time: 154.604 ms

@@ -1,0 +1,31 @@
+=== R10 run 1 ===
+Gather Merge  (cost=6132.26..6145.82 rows=119 width=58) (actual time=25.024..26.039 rows=35.00 loops=1)
+  Workers Planned: 1
+  Workers Launched: 1
+  Buffers: shared hit=74 read=2277
+  ->  Sort  (cost=5132.25..5132.42 rows=70 width=58) (actual time=23.559..23.560 rows=17.50 loops=2)
+        Sort Key: i.reported_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=74 read=2277
+        Worker 0:  Sort Method: quicksort  Memory: 27kB
+        ->  Hash Join  (cost=733.60..5130.10 rows=70 width=58) (actual time=23.521..23.549 rows=17.50 loops=2)
+              Hash Cond: (i.segment_id = s.segment_id)
+              Buffers: shared hit=66 read=2277
+              ->  Parallel Seq Scan on incident_reports i  (cost=0.00..4394.65 rows=706 width=37) (actual time=23.212..23.230 rows=219.50 loops=2)
+                    Filter: (date(reported_at) = '2026-06-30'::date)
+                    Rows Removed by Filter: 119780
+                    Buffers: shared read=2277
+              ->  Hash  (cost=683.86..683.86 rows=3979 width=29) (actual time=0.604..0.604 rows=4000.00 loops=1)
+                    Buckets: 4096  Batches: 1  Memory Usage: 284kB
+                    Buffers: shared hit=66
+                    ->  Bitmap Heap Scan on road_segments s  (cost=47.13..683.86 rows=3979 width=29) (actual time=0.096..0.369 rows=4000.00 loops=1)
+                          Recheck Cond: (city_id = 1)
+                          Buffers: shared hit=66
+                          ->  Bitmap Index Scan on idx_segments_city_road  (cost=0.00..46.13 rows=3979 width=0) (actual time=0.048..0.048 rows=4000.00 loops=1)
+                                Index Cond: (city_id = 1)
+                                Index Searches: 1
+                                Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=289 read=3
+Planning Time: 1.042 ms
+Execution Time: 26.070 ms

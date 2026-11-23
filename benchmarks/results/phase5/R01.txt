@@ -1,0 +1,21 @@
+=== R01 run 1 ===
+Limit  (cost=9326.15..9326.20 rows=20 width=62) (actual time=201.418..201.421 rows=20.00 loops=1)
+  Buffers: shared hit=3 read=3331
+  ->  Sort  (cost=9326.15..9326.25 rows=41 width=62) (actual time=201.417..201.418 rows=20.00 loops=1)
+        Sort Key: (round((('6371'::double precision * acos(LEAST('1'::double precision, ((('0.9746238552210419'::double precision * cos(radians((latitude)::double precision))) * cos((radians((longitude)::double precision) - '1.3548031052143383'::double precision))) + ('0.2238489241298101'::double precision * sin(radians((latitude)::double precision))))))))::numeric, 3))
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=3 read=3331
+        ->  Bitmap Heap Scan on places  (cost=183.07..9325.06 rows=41 width=62) (actual time=2.531..201.324 rows=157.00 loops=1)
+              Recheck Cond: ((category_id = 1) AND (latitude >= 12.9262) AND (latitude <= 12.9442) AND (NOT is_permanently_closed))
+              Filter: ((longitude >= 77.6152) AND (longitude <= 77.6338))
+              Rows Removed by Filter: 3566
+              Heap Blocks: exact=3296
+              Buffers: shared read=3331
+              ->  Bitmap Index Scan on idx_places_open_cat_lat  (cost=0.00..183.06 rows=3731 width=0) (actual time=1.562..1.563 rows=3723.00 loops=1)
+                    Index Cond: ((category_id = 1) AND (latitude >= 12.9262) AND (latitude <= 12.9442))
+                    Index Searches: 1
+                    Buffers: shared read=35
+Planning:
+  Buffers: shared hit=228
+Planning Time: 1.562 ms
+Execution Time: 201.504 ms

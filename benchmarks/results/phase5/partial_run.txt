@@ -1,0 +1,20 @@
+Phase 5 Large Dataset Benchmark
+Database: gmaps_large
+Dataset: approximately 18.7 million CSV records
+Benchmark: interrupted manually after R12 due to time constraints
+
+Completed queries:
+R01 - 201.504 ms
+R02 - 0.594 ms
+R03 - 190.592 ms
+R04 - 45.074 ms
+R05 - 2.598 ms
+R06 - 1.095 ms
+R07 - 204.262 ms
+R08 - 1.014 ms
+R09 - 0.364 ms
+R10 - 26.070 ms
+R11 - 726.903 ms
+R12 - 154.604 ms
+
+R13-R30 and write workloads were not completed.

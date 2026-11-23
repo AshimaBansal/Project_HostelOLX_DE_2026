@@ -1,0 +1,31 @@
+===== CP4 PARTITIONING VERIFICATION =====
+Date: Mon Nov 23 20:25:11 IST 2026
+
+===== ROW COUNT VALIDATION =====
+ original_rows | partitioned_rows 
+---------------+------------------
+       4000000 |          4000000
+(1 row)
+
+
+===== PARTITION DISTRIBUTION =====
+         partition_name          |  rows   
+---------------------------------+---------
+ gmaps.navigation_sessions_p2025 | 2673993
+ gmaps.navigation_sessions_p2026 | 1326007
+(2 rows)
+
+
+===== PARTITION PRUNING =====
+                                                                                  QUERY PLAN                                                                                  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Finalize Aggregate  (cost=58894.08..58894.09 rows=1 width=8)
+   ->  Gather  (cost=58893.87..58894.08 rows=2 width=8)
+         Workers Planned: 2
+         ->  Partial Aggregate  (cost=57893.87..57893.88 rows=1 width=8)
+               ->  Parallel Seq Scan on navigation_sessions_p2025 navigation_sessions_partitioned  (cost=0.00..55108.46 rows=1114164 width=0)
+                     Filter: ((started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+(6 rows)
+
+
+===== PARTITION VERIFICATION COMPLETE =====
